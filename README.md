@@ -21,7 +21,7 @@
 | Android minSDK | 21 (Android 5.0+)      |
 | iOS            | Tương thích            |
 
-## 🛠️ Cài đặt & Chạy
+## Cài đặt & Chạy
 
 ```bash
 # Clone repository
