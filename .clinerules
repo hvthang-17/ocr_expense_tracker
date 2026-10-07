@@ -1,0 +1,23 @@
+# Clinelines & Rules for OCR Expense Tracker
+
+This repository is optimized for agentic development with Cline, Roo-Code, Claude Code, and Cursor.
+
+## Executive Guidelines for Coding Agents
+
+### 1. Karpathy Execution Loop
+- **Phase 1: Explore & Analyze**: Inspect existing files, providers, models, and docs before proposing edits.
+- **Phase 2: Plan & State Assumptions**: Outline minimal necessary changes. State any assumptions explicitly.
+- **Phase 3: Surgical Execution**: Modify only the specific lines and files needed. Never refactor or reformat unrelated code.
+- **Phase 4: Automated Verification**: Run static analysis (`flutter analyze`) and unit/widget tests (`flutter test`).
+
+### 2. Stack & Architecture Rules
+- **State Management**: Riverpod (`flutter_riverpod`). Ephemeral UI state stays in `StatefulWidget`. Shared & persistent state goes through Riverpod providers.
+- **Data & Currency**: All VND monetary amounts are stored and calculated as integers (`int`).
+- **Database**: SQLite via `sqflite`. Database access goes through `ExpenseRepository` and `DatabaseHelper`.
+- **OCR Engine**: Google ML Kit (`google_mlkit_text_recognition`) running strictly on-device.
+- **Charts**: Custom drawn via `CustomPainter` (`DonutPainter`, `BarChartPainter`). No third-party charting libraries.
+
+### 3. File & Code Hygiene
+- **Line Count Cap**: Keep Dart source files under ~300 lines. Split large widgets or helpers into modular sub-components.
+- **Preserve User Work**: Never modify or revert untouched code or dirty worktrees.
+- **Documentation Alignment**: When adding/modifying architectural components, update corresponding docs under `docs/`.

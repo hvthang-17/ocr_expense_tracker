@@ -1,0 +1,30 @@
+---
+description: Architecture, Riverpod state management, and layer boundaries for OCR Expense Tracker.
+globs: ["lib/features/**/*.dart", "lib/core/**/*.dart"]
+alwaysApply: false
+---
+# Architecture & Riverpod Rules
+
+## Feature-First Clean Architecture
+
+```
+lib/
+├── core/
+│   ├── constants/       # App constants, category keywords
+│   ├── theme/           # Material 3 theme & color schemes
+│   ├── utils/           # Currency & date formatters
+│   └── widgets/         # Shared app-wide widgets
+├── features/
+│   ├── camera/          # Camera preview & crop overlay
+│   ├── ocr/             # ML Kit text recognition & parser logic
+│   ├── review/          # OCR review & receipt edit screen
+│   ├── transaction/     # Models, DB helper, Expense repository
+│   ├── history/         # Expense history, search, and category filters
+│   └── dashboard/       # Spending analytics & CustomPainters
+```
+
+## Layer Boundaries & Data Rules
+1. **Domain & Data Layer**: `Expense` model, `ParsedReceipt`, `DatabaseHelper`, `ExpenseRepository`.
+2. **Services**: ML Kit OCR text recognition service and regex heuristic parser.
+3. **Presentation Layer**: Screen widgets and Riverpod state controllers.
+4. **Offline & Security**: All image processing and OCR happen on-device. No remote API calls or keys required.

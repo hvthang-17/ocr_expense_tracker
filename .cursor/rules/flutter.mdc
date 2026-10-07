@@ -1,0 +1,22 @@
+---
+description: Flutter and Dart standards for OCR Expense Tracker repository.
+globs: ["lib/**/*.dart", "test/**/*.dart"]
+alwaysApply: false
+---
+# Flutter & Dart Agent Rules for OCR Expense Tracker
+
+## Key Guidelines
+
+- **Karpathy Principles**:
+  - Think before coding: plan changes and state assumptions.
+  - Simplicity first: write minimal, clean, readable code.
+  - Surgical edits: touch only lines required for the task.
+  - Verification: run `flutter analyze` and `flutter test`.
+
+- **Coding Rules**:
+  - Store VND amounts in `int` (e.g. `50000` for 50,000 VND).
+  - State management uses Riverpod (`flutter_riverpod`).
+  - Use `StatefulWidget` for local view state (e.g. text selection, tab animation).
+  - Use Riverpod providers (`NotifierProvider`, `StateNotifierProvider`, `FutureProvider`) for app state.
+  - Source code files must be kept under 300 lines where practical.
+  - Edit existing files directly rather than creating redundant wrapper files.
