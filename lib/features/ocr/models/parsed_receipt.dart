@@ -1,3 +1,5 @@
+import 'package:ocr_expense_tracker/features/transaction/models/expense.dart';
+
 // Kết quả phân tích văn bản OCR từ biên lai.
 class ParsedReceipt {
   // Tên cửa hàng / đơn vị bán (có thể null nếu không nhận diện được).
@@ -9,6 +11,9 @@ class ParsedReceipt {
   // Tổng tiền VND dạng số nguyên (có thể null).
   final int? totalAmount;
 
+  // Danh mục chi tiêu được gợi ý (có thể null).
+  final ExpenseCategory? category;
+
   // Văn bản thô từ OCR dùng để phân tích.
   final String rawText;
 
@@ -16,6 +21,7 @@ class ParsedReceipt {
     this.merchant,
     this.date,
     this.totalAmount,
+    this.category,
     required this.rawText,
   });
 
@@ -26,9 +32,26 @@ class ParsedReceipt {
       date != null &&
       totalAmount != null;
 
+  // Tạo bản sao với các thuộc tính thay đổi.
+  ParsedReceipt copyWith({
+    String? merchant,
+    String? date,
+    int? totalAmount,
+    ExpenseCategory? category,
+    String? rawText,
+  }) {
+    return ParsedReceipt(
+      merchant: merchant ?? this.merchant,
+      date: date ?? this.date,
+      totalAmount: totalAmount ?? this.totalAmount,
+      category: category ?? this.category,
+      rawText: rawText ?? this.rawText,
+    );
+  }
+
   @override
   String toString() {
     return 'ParsedReceipt(merchant: $merchant, date: $date, '
-        'amount: $totalAmount, complete: $isComplete)';
+        'amount: $totalAmount, category: ${category?.name}, complete: $isComplete)';
   }
 }

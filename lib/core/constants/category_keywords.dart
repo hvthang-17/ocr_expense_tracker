@@ -10,7 +10,7 @@ import 'package:ocr_expense_tracker/features/transaction/models/expense.dart';
   (không phân biệt hoa/thường), danh mục tương ứng sẽ được gợi ý.
 */
 final Map<String, ExpenseCategory> categoryKeywords = {
-  // Ăn uống
+  // Ăn uống / Siêu thị / Thực phẩm
   'coffee': ExpenseCategory.food,
   'cà phê': ExpenseCategory.food,
   'cafe': ExpenseCategory.food,
@@ -37,6 +37,18 @@ final Map<String, ExpenseCategory> categoryKeywords = {
   'jollibee': ExpenseCategory.food,
   'lotteria': ExpenseCategory.food,
   'kfc': ExpenseCategory.food,
+  'circle k': ExpenseCategory.food,
+  'winmart': ExpenseCategory.food,
+  'lotte mart': ExpenseCategory.food,
+  'co.opmart': ExpenseCategory.food,
+  'coopmart': ExpenseCategory.food,
+  'siêu thị': ExpenseCategory.food,
+  'bách hóa': ExpenseCategory.food,
+  'thịt': ExpenseCategory.food,
+  'rau': ExpenseCategory.food,
+  'sữa': ExpenseCategory.food,
+  'bánh': ExpenseCategory.food,
+  'trái cây': ExpenseCategory.food,
 
   // Học tập
   'sách': ExpenseCategory.study,
@@ -53,10 +65,12 @@ final Map<String, ExpenseCategory> categoryKeywords = {
   'course': ExpenseCategory.study,
   'fahasa': ExpenseCategory.study,
   'nhà sách': ExpenseCategory.study,
+  'phương nam': ExpenseCategory.study,
 
   // Di chuyển
   'grab': ExpenseCategory.travel,
   'be': ExpenseCategory.travel,
+  'gojek': ExpenseCategory.travel,
   'taxi': ExpenseCategory.travel,
   'xe buýt': ExpenseCategory.travel,
   'bus': ExpenseCategory.travel,
