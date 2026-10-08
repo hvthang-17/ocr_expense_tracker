@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<!-- NOTE: Tùy chỉnh splash screen khởi động tại tệp này. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="?android:colorBackground" />
 
-    <!-- You can insert your own image assets here -->
+    <!-- TODO: Có thể thêm tài nguyên ảnh splash screen tại đây. -->
     <!-- <item>
         <bitmap
             android:gravity="center"

@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    // NOTE: Áp dụng Flutter Gradle Plugin sau Android và Kotlin Gradle Plugin.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -15,24 +15,20 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // TODO: Đặt Application ID duy nhất của ứng dụng.
         applicationId = "com.example.ocr_expense_tracker"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21
+        // NOTE: Có thể điều chỉnh các giá trị sau theo nhu cầu ứng dụng.
+        minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
-        // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
-        // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
-        // flag during build.
+        // NOTE: Dùng mã phiên bản từ pubspec.yaml.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // TODO: Thêm cấu hình ký release riêng trước khi phát hành.
+            // NOTE: Tạm ký bằng khóa debug để `flutter run --release` hoạt động.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
