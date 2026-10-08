@@ -34,10 +34,11 @@ class ExpenseRepository {
   }
 
   /*
-    Xóa chi tiêu theo ID và dọn dẹp file ảnh thu nhỏ nếu không còn
-    bản ghi nào khác tham chiếu tới cùng đường dẫn.
-    Trả về số hàng đã xóa.
-  */
+   * Xóa chi tiêu theo ID và dọn dẹp file ảnh thu nhỏ nếu không còn
+   * bản ghi nào khác tham chiếu tới cùng đường dẫn.
+   * Trả về số hàng đã xóa.
+   *
+   */
   Future<int> deleteExpense(int id) async {
     final db = await _dbHelper.database;
 
@@ -100,11 +101,12 @@ class ExpenseRepository {
   }
 
   /*
-    Tìm kiếm và lọc chi tiêu với các tham số tùy chọn.
-    - query: tìm theo tên cửa hàng (LIKE, không phân biệt hoa/thường)
-    - category: lọc theo danh mục
-    - startDate/endDate: lọc theo khoảng ngày
-  */
+   * Tìm kiếm và lọc chi tiêu với các tham số tùy chọn.
+   * - query: tìm theo tên cửa hàng (LIKE, không phân biệt hoa/thường)
+   * - category: lọc theo danh mục
+   * - startDate/endDate: lọc theo khoảng ngày
+   *
+   */
   Future<List<Expense>> searchAndFilterExpenses({
     String? query,
     ExpenseCategory? category,
@@ -162,13 +164,14 @@ class ExpenseRepository {
   }
 
   /*
-    Lấy tổng chi tiêu nhóm theo tuần trong [numWeeks] tuần gần nhất.
-    Trả về danh sách map chứa các key:
-    - weekLabel (String): ví dụ 'T1', 'T2'
-    - startDate (String): ngày ISO
-    - endDate (String): ngày ISO
-    - total (int): tổng chi tiêu dạng VND
-  */
+   * Lấy tổng chi tiêu nhóm theo tuần trong [numWeeks] tuần gần nhất.
+   * Trả về danh sách map chứa các key:
+   * - weekLabel (String): ví dụ 'T1', 'T2'
+   * - startDate (String): ngày ISO
+   * - endDate (String): ngày ISO
+   * - total (int): tổng chi tiêu dạng VND
+   *
+   */
   Future<List<Map<String, dynamic>>> getWeeklyTotals({
     int numWeeks = 5,
   }) async {
