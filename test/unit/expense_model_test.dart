@@ -84,7 +84,7 @@ void main() {
 
       expect(updated.merchant, 'New Merchant');
       expect(updated.totalAmount, 200000);
-      // unchanged fields
+      // Các trường không thay đổi.
       expect(updated.id, 1);
       expect(updated.transactionDate, '2026-01-01');
       expect(updated.category, ExpenseCategory.food);
