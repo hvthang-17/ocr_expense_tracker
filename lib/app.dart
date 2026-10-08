@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'core/routes/app_routes.dart';
 import 'core/theme/app_theme.dart';
+import 'core/utils/responsive.dart';
 import 'features/dashboard/presentation/dashboard_screen.dart';
 import 'features/history/presentation/history_screen.dart';
-import 'features/camera/presentation/camera_screen.dart';
+import 'features/ocr/models/parsed_receipt.dart';
 
 /*
-  Widget gốc của ứng dụng OCR Expense Tracker.
-  Cấu hình MaterialApp với theme sáng/tối (Material 3)
-  và điều hướng chính thông qua MainNavigation.
-*/
+ * Widget gốc của ứng dụng OCR Expense Tracker.
+ * Cấu hình MaterialApp với theme sáng/tối (Material 3),
+ * định tuyến tên (named routes via AppRoutes) và khung điều hướng chính.
+ *
+ */
 class ExpenseTrackerApp extends StatelessWidget {
   const ExpenseTrackerApp({super.key});
 
@@ -21,18 +24,21 @@ class ExpenseTrackerApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const MainNavigation(),
+      initialRoute: AppRoutes.home,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }
 
 /*
-  Khung điều hướng chính với BottomNavigationBar.
-  Bao gồm:
-  - Tab Dashboard: biểu đồ chi tiêu
-  - Tab Lịch sử: danh sách giao dịch
-  - FAB Camera: mở màn hình quét biên lai
-*/
+ * Khung điều hướng chính của ứng dụng với BottomNavigationBar & FAB Quét biên lai.
+ * Bao gồm:
+ * - Tab 0: Dashboard (thống kê & biểu đồ)
+ * - FAB trung tâm: Mở Camera quét biên lai
+ * - Tab 1: Lịch sử (danh sách & tìm kiếm giao dịch)
+ * Đồng thời hỗ trợ Responsive UI trên màn hình Tablet & Landscape.
+ *
+ */
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
 
@@ -54,20 +60,29 @@ class _MainNavigationState extends State<MainNavigation> {
     });
   }
 
-  void _openCamera() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => const CameraScreen(),
-      ),
+  Future<void> _openCamera() async {
+    final result = await Navigator.of(context).pushNamed<ParsedReceipt>(
+      AppRoutes.camera,
     );
+
+    if (result != null && mounted) {
+      Navigator.of(context).pushNamed(
+        AppRoutes.review,
+        arguments: result,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+      body: SafeArea(
+        child: ResponsiveCenter(
+          child: IndexedStack(
+            index: _currentIndex,
+            children: _screens,
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openCamera,
@@ -81,11 +96,13 @@ class _MainNavigationState extends State<MainNavigation> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
+            icon: Icon(Icons.dashboard_outlined),
+            activeIcon: Icon(Icons.dashboard),
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history),
+            icon: Icon(Icons.history_outlined),
+            activeIcon: Icon(Icons.history),
             label: 'Lịch sử',
           ),
         ],
@@ -93,3 +110,4 @@ class _MainNavigationState extends State<MainNavigation> {
     );
   }
 }
+
