@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ocr_expense_tracker/core/theme/app_theme.dart';
 
 /*
-  5 danh mục chi tiêu được ứng dụng hỗ trợ.
-  Mỗi danh mục có nhãn hiển thị, màu sắc và icon
-  để hiển thị đồng nhất trên form, danh sách, biểu đồ donut và bar chart.
-*/
+ * 5 danh mục chi tiêu được ứng dụng hỗ trợ.
+ * Mỗi danh mục có nhãn hiển thị, màu sắc và icon
+ * để hiển thị đồng nhất trên form, danh sách, biểu đồ donut và bar chart.
+ *
+ */
 enum ExpenseCategory {
   food,
   study,

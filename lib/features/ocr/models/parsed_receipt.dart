@@ -17,12 +17,16 @@ class ParsedReceipt {
   // Văn bản thô từ OCR dùng để phân tích.
   final String rawText;
 
+  // Đường dẫn file ảnh biên lai đã cắt / xử lý.
+  final String? imagePath;
+
   const ParsedReceipt({
     this.merchant,
     this.date,
     this.totalAmount,
     this.category,
     required this.rawText,
+    this.imagePath,
   });
 
   // Kiểm tra xem tất cả trường chính đã được trích xuất thành công chưa.
@@ -39,6 +43,7 @@ class ParsedReceipt {
     int? totalAmount,
     ExpenseCategory? category,
     String? rawText,
+    String? imagePath,
   }) {
     return ParsedReceipt(
       merchant: merchant ?? this.merchant,
@@ -46,12 +51,14 @@ class ParsedReceipt {
       totalAmount: totalAmount ?? this.totalAmount,
       category: category ?? this.category,
       rawText: rawText ?? this.rawText,
+      imagePath: imagePath ?? this.imagePath,
     );
   }
 
   @override
   String toString() {
     return 'ParsedReceipt(merchant: $merchant, date: $date, '
-        'amount: $totalAmount, category: ${category?.name}, complete: $isComplete)';
+        'amount: $totalAmount, category: ${category?.name}, imagePath: $imagePath, complete: $isComplete)';
   }
 }
+

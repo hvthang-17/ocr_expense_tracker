@@ -1,14 +1,15 @@
 import 'package:ocr_expense_tracker/features/transaction/models/expense.dart';
 
 /*
-  Bảng ánh xạ từ khóa → danh mục chi tiêu tập trung.
-  Mỗi từ khóa ánh xạ tới đúng một ExpenseCategory.
-  Đây là nguồn dữ liệu duy nhất cho logic gợi ý danh mục.
-  Xem thêm: CategorySuggestionService.
-
-  Khi văn bản OCR hoặc tên cửa hàng chứa một trong các từ khóa này
-  (không phân biệt hoa/thường), danh mục tương ứng sẽ được gợi ý.
-*/
+ * Bảng ánh xạ từ khóa → danh mục chi tiêu tập trung.
+ * Mỗi từ khóa ánh xạ tới đúng một ExpenseCategory.
+ * Đây là nguồn dữ liệu duy nhất cho logic gợi ý danh mục.
+ * Xem thêm: CategorySuggestionService.
+ *
+ * Khi văn bản OCR hoặc tên cửa hàng chứa một trong các từ khóa này
+ * (không phân biệt hoa/thường), danh mục tương ứng sẽ được gợi ý.
+ *
+ */
 final Map<String, ExpenseCategory> categoryKeywords = {
   // Ăn uống / Siêu thị / Thực phẩm
   'coffee': ExpenseCategory.food,

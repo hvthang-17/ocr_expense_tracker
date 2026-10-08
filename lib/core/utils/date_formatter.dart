@@ -32,6 +32,24 @@ class DateFormatter {
     }
   }
 
+  // Phân tích chuỗi ngày ISO-8601 hoặc dd/MM/yyyy thành DateTime.
+  // Trả về null nếu phân tích thất bại.
+  static DateTime? parse(String text) {
+    final cleaned = text.trim();
+    if (cleaned.isEmpty) return null;
+    final isoDate = fromIso(cleaned);
+    if (isoDate != null) return isoDate;
+    try {
+      return _displayFormat.parseStrict(cleaned);
+    } catch (_) {
+      try {
+        return DateFormat('d/M/yyyy').parseStrict(cleaned);
+      } catch (_) {
+        return null;
+      }
+    }
+  }
+
   // Chuyển chuỗi ngày ISO-8601 sang định dạng hiển thị.
   // Trả về chuỗi gốc nếu phân tích thất bại.
   static String isoToDisplay(String isoString) {

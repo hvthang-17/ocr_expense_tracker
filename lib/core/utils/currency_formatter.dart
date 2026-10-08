@@ -18,6 +18,26 @@ class CurrencyFormatter {
     return _vndFormat.format(amount);
   }
 
+  // Định dạng rút gọn cho biểu đồ (Ví dụ: 1500000 → '1.5M', 150000 → '150k', 0 → '0')
+  static String formatCompact(int amount) {
+    if (amount <= 0) return '0';
+    if (amount >= 1000000) {
+      final double val = amount / 1000000;
+      if (val % 1 == 0) {
+        return '${val.toInt()}M';
+      }
+      return '${val.toStringAsFixed(1)}M';
+    }
+    if (amount >= 1000) {
+      final double val = amount / 1000;
+      if (val % 1 == 0) {
+        return '${val.toInt()}k';
+      }
+      return '${val.toStringAsFixed(1)}k';
+    }
+    return amount.toString();
+  }
+
   // Phân tích chuỗi VND đã định dạng về số nguyên.
   // Loại bỏ các ký tự không phải chữ số. Trả về null nếu thất bại.
   static int? parse(String text) {
