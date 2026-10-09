@@ -83,7 +83,7 @@ class SummaryCards extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: _MetricSubCard(
-                title: 'Trung bình/GD',
+                title: 'Trung bình giao dịch',
                 value: CurrencyFormatter.format(summary.averageTransaction),
                 icon: Icons.analytics,
                 color: Colors.orange,
@@ -124,6 +124,7 @@ class _MetricSubCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(icon, size: 18, color: color),
                 const SizedBox(width: 6),
@@ -131,8 +132,11 @@ class _MetricSubCard extends StatelessWidget {
                   child: Text(
                     title,
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: Colors.grey[600],
+                      color: Colors.grey[700],
+                      height: 1.15,
                     ),
+                    maxLines: 2,
+                    softWrap: true,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

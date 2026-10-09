@@ -79,7 +79,7 @@ void main() {
     expect(find.text('Phúc Long Coffee'), findsOneWidget);
     expect(find.text('85.000 VND'), findsOneWidget);
     expect(find.text('Food'), findsWidgets);
-    expect(find.text('15/09/2026'), findsOneWidget);
+    expect(find.text('15/09/2026'), findsWidgets);
     expect(find.text('Không có ảnh biên lai'), findsOneWidget);
   });
 

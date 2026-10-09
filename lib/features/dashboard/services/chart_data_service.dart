@@ -70,7 +70,7 @@ class ChartDataService {
 
       int sum = 0;
       for (final expense in expenses) {
-        final date = DateFormatter.fromIso(expense.transactionDate);
+        final date = DateFormatter.parse(expense.transactionDate);
         if (date != null && !date.isBefore(start) && !date.isAfter(end)) {
           sum += expense.totalAmount;
         }
@@ -110,7 +110,7 @@ class ChartDataService {
     for (final expense in expenses) {
       grandTotal += expense.totalAmount;
 
-      final date = DateFormatter.fromIso(expense.transactionDate);
+      final date = DateFormatter.parse(expense.transactionDate);
       if (date != null && date.year == ref.year && date.month == ref.month) {
         monthlyTotal += expense.totalAmount;
       }
@@ -118,7 +118,7 @@ class ChartDataService {
 
     final avg = grandTotal ~/ expenses.length;
     final breakdown = getCategoryBreakdown(expenses);
-    final weekly = getWeeklyTotals(expenses, referenceDate: referenceDate);
+    final weekly = getWeeklyTotals(expenses, referenceDate: ref);
 
     return DashboardSummary(
       totalSpending: grandTotal,

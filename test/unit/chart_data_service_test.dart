@@ -120,6 +120,40 @@ void main() {
       expect(summary.monthlySpending, 400000);
     });
 
+    test('getDashboardSummary filters monthly spending using referenceDate', () {
+      const pastExpenses = [
+        Expense(
+          id: 1,
+          merchant: 'Highlands Coffee',
+          transactionDate: '2022-03-16',
+          totalAmount: 50000,
+          category: ExpenseCategory.food,
+          createdAt: '2022-03-16T10:00:00Z',
+          updatedAt: '2022-03-16T10:00:00Z',
+        ),
+        Expense(
+          id: 2,
+          merchant: 'Nhà sách Fahasa',
+          transactionDate: '2022-03-15',
+          totalAmount: 100000,
+          category: ExpenseCategory.study,
+          createdAt: '2022-03-15T10:00:00Z',
+          updatedAt: '2022-03-15T10:00:00Z',
+        ),
+      ];
+
+      final summary = ChartDataService.getDashboardSummary(
+        pastExpenses,
+        referenceDate: DateTime(2022, 3, 20),
+      );
+
+      expect(summary.isEmpty, false);
+      expect(summary.totalCount, 2);
+      expect(summary.totalSpending, 150000);
+      expect(summary.monthlySpending, 150000);
+      expect(summary.weeklyTotals.length, 4);
+    });
+
     test('getDashboardSummary handles zero expenses without crash or divide-by-zero', () {
       final summary = ChartDataService.getDashboardSummary(
         [],

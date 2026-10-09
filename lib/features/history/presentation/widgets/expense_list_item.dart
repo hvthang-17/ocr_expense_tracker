@@ -49,17 +49,21 @@ class ExpenseListItem extends StatelessWidget {
               style: theme.textTheme.bodySmall,
             ),
             const SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              decoration: BoxDecoration(
-                color: categoryColor.withAlpha(26),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Text(
-                expense.category.label,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: categoryColor,
-                  fontWeight: FontWeight.w600,
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: categoryColor.withAlpha(26),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  expense.category.label,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: categoryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),

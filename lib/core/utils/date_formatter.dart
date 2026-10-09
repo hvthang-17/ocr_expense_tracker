@@ -39,6 +39,8 @@ class DateFormatter {
     if (cleaned.isEmpty) return null;
     final isoDate = fromIso(cleaned);
     if (isoDate != null) return isoDate;
+    final tryIso = DateTime.tryParse(cleaned);
+    if (tryIso != null) return tryIso;
     try {
       return _displayFormat.parseStrict(cleaned);
     } catch (_) {
