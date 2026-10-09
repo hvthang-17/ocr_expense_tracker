@@ -99,12 +99,19 @@ class ImageProcessingService {
     final x = ((source.width - cropW) / 2).round();
     final y = ((source.height - cropH) / 2).round();
 
-    return img.copyCrop(
+    final cropped = img.copyCrop(
       source,
       x: x,
       y: y,
       width: cropW,
       height: cropH,
+    );
+
+    // Tăng cường tương phản nhẹ để chữ nổi rõ hơn trên ảnh chụp thật
+    return img.adjustColor(
+      cropped,
+      contrast: 1.15,
+      brightness: 1.05,
     );
   }
 
