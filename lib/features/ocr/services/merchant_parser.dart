@@ -41,6 +41,15 @@ class MerchantParser {
     'xin cảm ơn',
     'thank you',
     'welcome',
+    'www.',
+    'http',
+    'facebook',
+    'fb.com',
+    'instagram',
+    'zalo',
+    'wifi',
+    'pass:',
+    'mật khẩu',
   ];
 
   // Regex phát hiện chuỗi chỉ chứa ký tự đặc biệt hoặc số
